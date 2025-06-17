@@ -10,18 +10,19 @@
 
 ```bash
 git clone https://github.com/GabrielRhoden86/gestao_alunos.git
-2️⃣ Instale as dependências
- 
-composer install
-3️⃣ Copie o arquivo .env de exemplo
- 
-cp .env.example .env
-4️⃣ Gere a chave da aplicação
- 
-php artisan key:generate
-5️⃣ Configure o banco de dados
 
+2️⃣ **Instale as dependências**
+composer install
+
+3️⃣ **Copie o arquivo .env de exemplo**
+cp .env.example .env
+
+4️⃣ **Gere a chave da aplicação**
+php artisan key:generate
+
+5️⃣ **Configure o banco de dados**
 No arquivo .env, edite conforme necessário:  
+
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3306
@@ -52,7 +53,7 @@ php artisan db:seed
 
 🔐 Autenticação JWT
 🔑 Login para obter token
-POST http://localhost:8000/api/login
+POST http://localhost:8002/api/login
 
 👤 Acessar como Gestor
 {
@@ -65,6 +66,17 @@ POST http://localhost:8000/api/login
   "email": "funcionario@email.com",
   "password": "230803"
 }
+
+## 🔐 Autorização com JWT
+Após realizar o login com sucesso e receber o token JWT, você deve inseri-lo no **cabeçalho da requisição** para acessar rotas.
+
+### ✅ Exemplo no Postman:
+**Cabeçalho HTTP (Headers):**
+Exemplo visual no Postman:
+
+| Key           | Value                                                      |
+|---------------|------------------------------------------------------------|
+| Authorization | Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...             |
 
 📚 Funcionalidades da API
 👨‍🎓 Cadastrar aluno
@@ -99,13 +111,14 @@ PHP >= 8.2
 
 Laravel 12.x
 
-MySQL
+mysql 10.4.32-MariaDB
 
-Composer
+Composer version 2.8.4
 
 👨‍💻 Autor
 Gabriel Rhoden
-📧 gabrielrhdden@email.com
-🔗 LinkedIn (adicione o link real se quiser)
+📧 **Email:** [gabrielrhdden@email.com](mailto:gabrielrhdden@email.com)  
+🔗 **LinkedIn:** [linkedin.com/in/gabrielrhoden86](https://www.linkedin.com/in/gabrielrhoden86/)
+
 
 
