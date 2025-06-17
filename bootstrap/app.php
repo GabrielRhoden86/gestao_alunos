@@ -3,6 +3,8 @@
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
+use Illuminate\Auth\AuthenticationException;
+
 
 return Application::configure(basePath: dirname(__DIR__))
     ->withRouting(
@@ -13,6 +15,14 @@ return Application::configure(basePath: dirname(__DIR__))
     )
     ->withMiddleware(function (Middleware $middleware): void {
         //
+    })
+    ->withExceptions(function (Exceptions $exceptions): void {
+        $exceptions->render(function (AuthenticationException $e, $request) {
+            return response()->json([
+                'message' => 'Você precisa estar autenticado para acessar esta funcionalidade.',
+                'error' => 'Não autorizado'
+            ], 401);
+        });
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         //
