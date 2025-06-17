@@ -11,7 +11,7 @@
 ```bash
 git clone https://github.com/GabrielRhoden86/gestao_alunos.git
 
-2️⃣ ##Instale as dependências
+2️⃣## Instale as dependências
 composer install
 
 3️⃣ Copie o arquivo .env de exemplo
