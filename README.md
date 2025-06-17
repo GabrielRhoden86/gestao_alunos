@@ -11,17 +11,16 @@
 ```bash
 git clone https://github.com/GabrielRhoden86/gestao_alunos.git
 
-2️⃣## Instale as dependências
+2️⃣ ## Instale as dependências
 composer install
 
-3️⃣ Copie o arquivo .env de exemplo
+3️⃣ ## Copie o arquivo .env de exemplo
 cp .env.example .env
 
-4️⃣ Gere a chave da aplicação
-
+4️⃣ ## Gere a chave da aplicação
 php artisan key:generate
-5️⃣ Configure o banco de dados
 
+5️⃣ ## Configure o banco de dados:
 No arquivo .env, edite conforme necessário:  
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
@@ -30,20 +29,19 @@ DB_DATABASE=gestao_alunos
 DB_USERNAME=root
 DB_PASSWORD=
 
-6️⃣ Execute as migrações
+6️⃣ ## Execute as migrações
 php artisan migrate
 
-7️⃣ Inicie o servidor
-
+7️⃣ ## Inicie o servidor
 php artisan serve --port=8002
 
-8️⃣ Gere a chave JWT
+8️⃣ ## Gere a chave JWT
 php artisan jwt:secret
 
-📝 Copie a chave gerada e cole no .env:
+📝 ## Copie a chave gerada e cole no .env:
 JWT_SECRET=chave_gerada_aqui
 
-9️⃣ Otimize a aplicação
+9️⃣ ## Otimize a aplicação
 php artisan optimize
 
 🧪 Exemplos de como testar a aplicação:
