@@ -42,10 +42,6 @@ MAIL_ENCRYPTION=tls
 MAIL_FROM_ADDRESS=gabrielrhodden@gmail.com
 MAIL_FROM_NAME="${APP_NAME}"
 
-3️⃣ ❗ IMPORTANTE:
-No arquivo config\app.php, substitua pelo email que irá receber a notificação:
-
-'notificacao_email_gestor' => 'email_gestor_notificacao@gmail.com',
 
 ✅ Execute as migrações
 php artisan migrate
@@ -61,18 +57,31 @@ JWT_SECRET=chave_gerada_aqui
 ✅ Otimize a aplicação
 php artisan optimize
 
+---
+❗ IMPORTANTE:
+No arquivo database\seeders\DatabaseSeeder.php, substitua pelo email que irá receber a notificação:
+# Perfil Gestor
+    User::factory()->create([
+        'email' =>  "email_para_gestao@notificacao.com",
+        'perfil' => 'gestor',
+    ]);
+
+Esse email será usado tanto para notificação como para login do gestor. 
+Caso queira mudar, basta alterar o email no arquivo DatabaseSeeder
+
+ php artisan db:seed
+
+```bash
+
 🧪 Exemplos de como testar a aplicação:
-🌱 Criar usuários de teste
- 
-php artisan db:seed
+
 🔐 Autenticação JWT
 🔑 Login para obter token:
 POST http://localhost:8002/api/login
 
 👤 Acessar como Gestor
- 
 {
-  "email": "seuemail@email.com", 
+  "email": "email_para_gestao@notificacao.com", 
   "password": "230803"
 }
 👤 Acessar como Funcionário
@@ -87,14 +96,12 @@ Após realizar o login com sucesso e receber o token JWT, você deve inseri-lo n
 ✅ Exemplo no Postman
 Cabeçalho HTTP (Headers):
 
-Key	Value
+Key         	Value
 Authorization	Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...
 
 📚 Funcionalidades da API
 👨‍🎓 Cadastrar aluno
 POST http://127.0.0.1:8002/api/criar-aluno
-
- 
 {
   "nome": "Gabriel Rhoden",
   "cpf": "12345678900",
@@ -102,10 +109,9 @@ POST http://127.0.0.1:8002/api/criar-aluno
   "turma": "TI-2025",
   "status": "Pendente"
 }
+
 ✏️ Atualizar aluno
 PATCH http://127.0.0.1:8002/api/editar-aluno/1
-
- 
 {
   "nome": "Gabriel Rhoden",
   "turma": "TI-2025",

@@ -7,14 +7,15 @@ use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
 {
-      public function run()
+    public function run()
     {
-        $gestorEmail = config(key: 'app.notificacao_email_gestor');
+        # Perfil Gestor
         User::factory()->create([
-            'email' =>  $gestorEmail,
+            'email' =>  "gabrielrhodden@gmail.com",
             'perfil' => 'gestor',
         ]);
 
+        # Perfil funcionários
         User::factory()->create([
             'email' => 'funcionario@email.com',
             'perfil' => 'funcionario',

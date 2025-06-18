@@ -32,7 +32,7 @@ services:
     container_name: gestao-alunos-db
     environment:
       MYSQL_DATABASE: gestao_alunos
-      MYSQL_ROOT_PASSWORD: root
+      MYSQL_ROOT_PASSWORD:
     ports:
       - "3307:3306"
     volumes:
