@@ -19,7 +19,8 @@ services:
       DB_DATABASE: gestao_alunos
       DB_USERNAME: root
       DB_PASSWORD: root
-    entrypoint: ["/bin/sh", "/var/www/gestao_alunos/entrypoint.sh"]
+    entrypoint: ["/bin/sh", "/var/www/entrypoint.sh"]
+
 
 
   web:
