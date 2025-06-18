@@ -19,21 +19,20 @@ cp .env.example .env
 4️⃣ Gere a chave da aplicação
  
 php artisan key:generate
+
 📦 Variáveis de ambiente
 Você deve configurar os seguintes campos no seu arquivo .env:
 
 1️⃣ Configure o banco de dados
 No arquivo .env, edite conforme necessário:
-
- 
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3306
 DB_DATABASE=gestao_alunos
 DB_USERNAME=root
 DB_PASSWORD=
-2️⃣ Configure o servidor de email (teste Gmail)
- 
+
+2️⃣ Configure o servidor de email (teste Gmail) 
 MAIL_MAILER=smtp
 MAIL_HOST=smtp.gmail.com
 MAIL_PORT=587
@@ -47,21 +46,21 @@ MAIL_FROM_NAME="${APP_NAME}"
 No arquivo config\app.php, substitua pelo email que irá receber a notificação:
 
 'notificacao_email_gestor' => 'email_gestor_notificacao@gmail.com',
+
 ✅ Execute as migrações
- 
 php artisan migrate
+
 ✅ Inicie o servidor
- 
-php artisan serve --port=8002
+ php artisan serve --port=8002
+
 ✅ Gere a chave JWT
- 
 php artisan jwt:secret
 📝 Copie a chave gerada e insira no .env:
- 
 JWT_SECRET=chave_gerada_aqui
-9️⃣ Otimize a aplicação
- 
+
+✅ Otimize a aplicação
 php artisan optimize
+
 🧪 Exemplos de como testar a aplicação:
 🌱 Criar usuários de teste
  
