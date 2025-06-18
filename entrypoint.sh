@@ -6,6 +6,16 @@ while ! mysql -h "$DB_HOST" -P "$DB_PORT" -u "$DB_USERNAME" -p"$DB_PASSWORD" -e 
   sleep 3
 done
 
+cat <<EOF > /var/www/.env
+DB_HOST=$DB_HOST
+DB_PORT=$DB_PORT
+DB_DATABASE=$DB_DATABASE
+DB_USERNAME=$DB_USERNAME
+DB_PASSWORD=$DB_PASSWORD
+EOF
+
+exec php-fpm
+
 echo "Banco de dados disponível! Iniciando comandos Laravel..."
 
 if [ ! -d "vendor" ]; then
