@@ -37,5 +37,5 @@ COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 RUN echo "Copiando script de entrada..."
 COPY entrypoint.sh /usr/local/bin/
 RUN chmod +x /usr/local/bin/entrypoint.sh
-
-ENTRYPOINT ["entrypoint.sh"]
+EXPOSE 9000
+CMD ["php-fpm"]
