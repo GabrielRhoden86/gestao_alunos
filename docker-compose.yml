@@ -19,7 +19,8 @@ services:
       DB_DATABASE: gestao_alunos
       DB_USERNAME: root
       DB_PASSWORD: root
-    command: ["php-fpm"]
+    entrypoint: ["/bin/sh", "/var/www/gestao_alunos/entrypoint.sh"]
+
 
   web:
     image: nginx:alpine
