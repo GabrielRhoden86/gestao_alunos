@@ -10,7 +10,6 @@
 git clone https://github.com/GabrielRhoden86/gestao_alunos.git
 cd gestao_alunos
 
-
 2️⃣ Copiar o arquivo de ambiente
 cp .env.example .env
 Cria o arquivo .env com as configurações padrão para o projeto Laravel.
