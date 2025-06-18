@@ -3,7 +3,7 @@
 ⚙️ Comandos para subir o projeto:
  
 ```bash
-💡 Observação: Caso esteja utilizando Linux ou WSL, pode ser necessário utilizar sudo antes dos comandos abaixo para garantir permissões.
+💡 Observação: pode ser necessário utilizar sudo antes dos comandos abaixo para garantir permissões.
 
 1️⃣  Clonar o repositório do projeto
 git clone https://github.com/GabrielRhoden86/gestao_alunos.git
@@ -11,7 +11,6 @@ cd gestao_alunos
 
 2️⃣ Copiar o arquivo de ambiente
 cp .env.example .env
-Cria o arquivo .env com as configurações para o projeto gestao_alunos Laravel.
 
 📦 Variáveis de ambiente
 Você deve configurar os seguintes campos no seu arquivo .env:
@@ -25,7 +24,7 @@ DB_DATABASE=gestao_alunos
 DB_USERNAME=root
 DB_PASSWORD=root
 
-2️⃣ Configure o servidor de email server teste Gmail
+2️⃣ Configure o servidor de email server com essas credencias para receber notificação 
 MAIL_MAILER=smtp
 MAIL_HOST=smtp.gmail.com
 MAIL_PORT=587
@@ -62,6 +61,22 @@ Gera caches para melhorar performance da aplicação.
 7️⃣  Executar migrações do banco de dados
 php artisan migrate
 Cria as tabelas e estrutura do banco conforme as migrations do projeto.
+
+---
+❗ IMPORTANTE: Caso não tenha feito O  1° tutorial do READM.MD:
+No arquivo database\seeders\DatabaseSeeder.php, substitua pelo email que irá receber a notificação:
+# Perfil Gestor
+    User::factory()->create([
+        'email' =>  "email_para_gestao@notificacao.com",
+        'perfil' => 'gestor',
+    ]);
+
+Esse email será usado tanto para notificação como para login do gestor. 
+Caso queira mudar, basta alterar o email no arquivo DatabaseSeeder
+
+✅ php artisan db:seed
+
+```bash
 
 8️⃣ Insere os usuarios funcionário e gestor no banco de dados
 php artisan db:seed
