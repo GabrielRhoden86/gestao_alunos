@@ -26,6 +26,7 @@ services:
       - app
     networks:
       - gestao-network
+
   db:
     image: mysql:5.7
     container_name: gestao-alunos-db

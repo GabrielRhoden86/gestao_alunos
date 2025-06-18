@@ -3,8 +3,7 @@
 ⚙️ Comandos para subir o projeto:
  
 ```bash
-# Subir o container linux ou wsl
-# talvez seja necessário executar sudo antes dos comandos
+💡 Observação: Caso esteja utilizando Linux ou WSL, pode ser necessário utilizar sudo antes dos comandos abaixo para garantir permissões.
 
 1️⃣  Clonar o repositório do projeto
 git clone https://github.com/GabrielRhoden86/gestao_alunos.git
@@ -12,11 +11,33 @@ cd gestao_alunos
 
 2️⃣ Copiar o arquivo de ambiente
 cp .env.example .env
-Cria o arquivo .env com as configurações padrão para o projeto Laravel.
+Cria o arquivo .env com as configurações para o projeto gestao_alunos Laravel.
+
+📦 Variáveis de ambiente
+Você deve configurar os seguintes campos no seu arquivo .env:
+
+1️⃣ Configure o banco de dados
+No arquivo .env, edite conforme necessário:
+DB_CONNECTION=mysql
+DB_HOST=db
+DB_PORT=3306
+DB_DATABASE=gestao_alunos
+DB_USERNAME=root
+DB_PASSWORD=root
+
+2️⃣ Configure o servidor de email server teste Gmail
+MAIL_MAILER=smtp
+MAIL_HOST=smtp.gmail.com
+MAIL_PORT=587
+MAIL_USERNAME=gabrielrhodden@gmail.com
+MAIL_PASSWORD=qntfweonctgospkg
+MAIL_ENCRYPTION=tls
+MAIL_FROM_ADDRESS=gabrielrhodden@gmail.com
+MAIL_FROM_NAME="${APP_NAME}"
 
 🐳 Subir os containers Docker
 docker-compose up -d --build
-Sobe os containers definidos no docker-compose.yml em modo destacado (background), com rebuild.
+Sobe os containers definidos no docker-compose.yml em modo destacado background, com rebuild.
 
 3️⃣ Acessar o container da aplicação
 docker exec -it gestao-alunos-app bash
@@ -30,11 +51,7 @@ Instala as bibliotecas e dependências PHP necessárias para o projeto.
 php artisan key:generate
 Gera a chave de segurança usada para criptografia e sessões no Laravel.
 
-6️⃣ Executar migrações do banco de dados
-php artisan migrate
-Cria as tabelas e estrutura do banco conforme as migrations do projeto.
-
-7️⃣ Gerar a chave JWT para autenticação
+6️⃣ Gerar a chave JWT para autenticação
 php artisan jwt:secret
 Cria a chave usada para autenticação JWT no sistema.
 
@@ -42,30 +59,11 @@ Cria a chave usada para autenticação JWT no sistema.
 php artisan optimize
 Gera caches para melhorar performance da aplicação.
 
-📦 Variáveis de ambiente
-Você deve configurar os seguintes campos no seu arquivo .env:
+7️⃣  Executar migrações do banco de dados
+php artisan migrate
+Cria as tabelas e estrutura do banco conforme as migrations do projeto.
 
-1️⃣ Configure o banco de dados
-No arquivo .env, edite conforme necessário:
-DB_CONNECTION=mysql
-DB_HOST=127.0.0.1
-DB_PORT=3306
-DB_DATABASE=gestao_alunos
-DB_USERNAME=root
-DB_PASSWORD=
-
-2️⃣ Configure o servidor de email (teste Gmail) 
-MAIL_MAILER=smtp
-MAIL_HOST=smtp.gmail.com
-MAIL_PORT=587
-MAIL_USERNAME=gabrielrhodden@gmail.com
-MAIL_PASSWORD=qntfweonctgospkg
-MAIL_ENCRYPTION=tls
-MAIL_FROM_ADDRESS=gabrielrhodden@gmail.com
-MAIL_FROM_NAME="${APP_NAME}"
-
-
-✅ Insere os usuarios funcionário e gestor no banco de dados
+8️⃣ Insere os usuarios funcionário e gestor no banco de dados
 php artisan db:seed
 Insere dados de exemplo ou obrigatórios no banco para o sistema funcionar.
 

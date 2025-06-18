@@ -69,7 +69,7 @@ No arquivo database\seeders\DatabaseSeeder.php, substitua pelo email que irá re
 Esse email será usado tanto para notificação como para login do gestor. 
 Caso queira mudar, basta alterar o email no arquivo DatabaseSeeder
 
- php artisan db:seed
+✅ php artisan db:seed
 
 ```bash
 
