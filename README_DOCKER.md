@@ -43,6 +43,22 @@ Sobe os containers definidos no docker-compose.yml em modo destacado background,
 docker exec -it gestao-alunos-app bash
 Abre um terminal dentro do container Laravel para executar comandos.
 
+4️⃣ Instalar dependências PHP com Composer
+composer install
+Instala as bibliotecas e dependências PHP necessárias para o projeto.
+
+5️⃣ Gerar chave de criptografia da aplicação
+php artisan key:generate
+Gera a chave de segurança usada para criptografia e sessões no Laravel.
+
+6️⃣ Gerar a chave JWT para autenticação
+php artisan jwt:secret
+Cria a chave usada para autenticação JWT no sistema.
+
+9️⃣ Otimizar o framework Laravel
+php artisan optimize
+Gera caches para melhorar performance da aplicação.
+
 7️⃣  Executar migrações do banco de dados
 php artisan migrate
 Cria as tabelas e estrutura do banco conforme as migrations do projeto.
