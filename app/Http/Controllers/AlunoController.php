@@ -12,12 +12,10 @@ use Exception;
 class AlunoController extends Controller
 {
     protected $alunoService;
-
     public function __construct(AlunoService $alunoService)
     {
         $this->alunoService = $alunoService;
     }
-
     public function criarAluno(StoreAlunoRequest $request)
     {
         try {
@@ -34,8 +32,6 @@ class AlunoController extends Controller
             $aluno = $this->alunoService->aditarAluno($request->validated(), $id);
             return response()->json(['message' => 'Dados do aluno atualizado com sucesso!','data' => $aluno],
             200);
-        } catch (Exception $e) {
-            return response()->json(['message' => $e->getMessage()], 403);
         } catch (Throwable $e) {
             return response()->json(['message' => 'Erro interno ao atualizar aluno.', 'error'=> $e->getMessage()], 
             500);

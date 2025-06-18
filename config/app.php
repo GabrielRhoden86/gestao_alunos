@@ -15,6 +15,9 @@ return [
 
     'name' => env('APP_NAME', 'Laravel'),
 
+    'notificacao_email_gestor' => 'gabrielrhodden@gmail.com',
+
+
     /*
     |--------------------------------------------------------------------------
     | Application Environment

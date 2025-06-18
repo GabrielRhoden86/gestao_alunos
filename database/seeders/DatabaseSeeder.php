@@ -9,8 +9,9 @@ class DatabaseSeeder extends Seeder
 {
       public function run()
     {
+        $gestorEmail = config(key: 'app.notificacao_email_gestor');
         User::factory()->create([
-            'email' => 'gestor@email.com',
+            'email' =>  $gestorEmail,
             'perfil' => 'gestor',
         ]);
 

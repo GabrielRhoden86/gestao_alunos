@@ -31,22 +31,32 @@ class AlunoService
     {
         try {
             $aluno = $this->alunoRepository->findById($id);
-            $statusAnterior = $aluno->status;
+            $nomeAluno = $aluno->nome;
+            $alunoId = $aluno->id;
             $usuario = Auth::user();
-
+            $emailUsuario = $usuario->email;
+        
             if (isset($dados['status']) && $usuario->perfil === Perfil::FUNCIONARIO->value) {
-                throw new \Exception('Funcionários não têm permissão para alterar o status do aluno.');
+                return response()->json(['message' =>
+                 'Funcionários não têm permissão para alterar o status do aluno.'], 403);
             }
-
             $alunoAtualizado = $this->alunoRepository->update($dados, $id);
+            $statusAnterior = $aluno->status;
             $statusNovo = $alunoAtualizado->status;
 
-            // Verifica se o status foi alterado e envia notificação
+            $dadosNotificacao = [
+                "nomeAluno" => $nomeAluno,
+                "alunoId" => $alunoId, 
+                "statusAnterior" => $statusAnterior,
+                "statusNovo" => $statusNovo,
+                "emailUsuario" => $emailUsuario
+            ];
+             
             if ($statusAnterior !== $statusNovo && in_array($statusNovo, ['Aprovado', 'Cancelado'])) {
-                $this->notificacaoService->notificarGestorAlteracaoStatus($id, $statusAnterior, $statusNovo);
+                $this->notificacaoService->notificarGestorAlteracaoStatus($dadosNotificacao);
             }
-
             return $alunoAtualizado;
+
         } catch (Throwable $e) {
             Log::error('Erro ao atualizar aluno - service: ' . $e->getMessage());
             throw $e;
@@ -61,7 +71,7 @@ class AlunoService
             throw $e;
         }
     }
-    public function buscarAluno($id)
+    public function buscarAluno(int $id)
     {
         try {
             return $this->alunoRepository->findById($id);

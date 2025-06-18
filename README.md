@@ -1,122 +1,140 @@
-# 🎓 **API - Gestão de Alunos (Laravel 12)**
+    # 🎓 **API - Gestão de Alunos (Laravel 12)**
 
-**Sistema de gestão de alunos desenvolvido com Laravel 12.**
+    **Sistema de gestão de alunos desenvolvido com Laravel 12.**
 
----
+    ---
 
-## ⚙️ **Configuração do Ambiente**
+    ## ⚙️ **Configuração do Ambiente local para testes
 
-### 1️⃣ Clone o repositório
+    ### 1️⃣ Clone o repositório
 
-```bash
-git clone https://github.com/GabrielRhoden86/gestao_alunos.git
+    ```bash
+    git clone https://github.com/GabrielRhoden86/gestao_alunos.git
 
-2️⃣ ## Instale as dependências
-composer install
+    2️⃣ ## Instale as dependências
+    composer install
 
-3️⃣ ## Copie o arquivo .env de exemplo
-cp .env.example .env
+    3️⃣ ## Copie o arquivo .env de exemplo
+    cp .env.example .env
 
-4️⃣ ## Gere a chave da aplicação
-php artisan key:generate
+    4️⃣ ## Gere a chave da aplicação
+    php artisan key:generate
 
-5️⃣ ## Configure o banco de dados:
-No arquivo .env, edite conforme necessário:  
-DB_CONNECTION=mysql
-DB_HOST=127.0.0.1
-DB_PORT=3306
-DB_DATABASE=gestao_alunos
-DB_USERNAME=root
-DB_PASSWORD=
+    ## 📦 Variáveis de ambiente
+    Você deve configurar os seguintes campos no seu `.env`:
 
-6️⃣ ## Execute as migrações
-php artisan migrate
+    1️⃣  ## Configure o banco de dados .env:
+    No arquivo .env, edite conforme necessário:  
+    DB_CONNECTION=mysql
+    DB_HOST=127.0.0.1
+    DB_PORT=3306
+    DB_DATABASE=gestao_alunos
+    DB_USERNAME=root
+    DB_PASSWORD=
 
-7️⃣ ## Inicie o servidor
-php artisan serve --port=8002
+    2️⃣ ## Configure o servidor (servidor teste google) de email com esses dados:
+    MAIL_MAILER=smtp
+    MAIL_HOST=smtp.gmail.com
+    MAIL_PORT=587
+    MAIL_USERNAME=gabrielrhodden@gmail.com
+    MAIL_PASSWORD=qntfweonctgospkg
+    MAIL_ENCRYPTION=tls
+    MAIL_FROM_ADDRESS=gabrielrhodden@gmail.com
+    MAIL_FROM_NAME="${APP_NAME}"
 
-8️⃣ ## Gere a chave JWT
-php artisan jwt:secret
+    3️⃣ ❗ **IMPORTANTE:** Em `config\app.php`: Substitua pelo email que irá a notificação;
 
-📝 ## Copie a chave gerada e cole no .env:
-JWT_SECRET=chave_gerada_aqui
+    'notificacao_email_gestor' => 'email_gestor_notificacao@gmail.com',
 
-9️⃣ ## Otimize a aplicação
-php artisan optimize
+    ✅  ## Execute as migrações
+    php artisan migrate
 
-🧪 Exemplos de como testar a aplicação:
+    ✅  ## Inicie o servidor
+    php artisan serve --port=8002
 
-🌱 Criar usuários de teste
-php artisan db:seed
+    ✅  ## Gere a chave JWT
+    php artisan jwt:secret
 
-🔐 Autenticação JWT
-🔑 Login para obter token
-POST http://localhost:8002/api/login
+    📝 ## Copie a chave gerada e insira no .env:
+    JWT_SECRET=chave_gerada_aqui
 
-👤 Acessar como Gestor
-{
-  "email": "gestor@email.com",
-  "password": "230803"
-}
+    9️⃣ ## Otimize a aplicação
+    php artisan optimize
 
-👤 Acessar como Funcionário
-{
-  "email": "funcionario@email.com",
-  "password": "230803"
-}
+    🧪 Exemplos de como testar a aplicação:
 
-## 🔐 Autorização com JWT
-Após realizar o login com sucesso e receber o token JWT, você deve inseri-lo no **cabeçalho da requisição** para acessar rotas.
+    🌱 Criar usuários de teste
+    php artisan db:seed
 
-### ✅ Exemplo no Postman:
-**Cabeçalho HTTP (Headers):**
-Exemplo visual no Postman:
+    🔐 Autenticação JWT
+    🔑 Login para obter token
+    POST http://localhost:8002/api/login
 
-| Key           | Value                                                      |
-|---------------|------------------------------------------------------------|
-| Authorization | Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...             |
+    👤 Acessar como Gestor
+    {
+    "email": "seuemail@email.com", 
+    "password": "230803"
+    }
 
-📚 Funcionalidades da API
-👨‍🎓 Cadastrar aluno
-POST http://127.0.0.1:8002/api/criar-aluno
-{
-  "nome": "Gabriel Rhoden",
-  "cpf": "12345678900",
-  "data_nascimento": "1990-01-01",
-  "turma": "TI-2025",
-  "status": "Pendente"
-}
+    👤 Acessar como Funcionário
+    {
+    "email": "funcionario@email.com",
+    "password": "230803"
+    }
 
-✏️ Atualizar aluno
-PATCH http://127.0.0.1:8002/api/editar-aluno/1
-{
-  "nome": "Gabriel Rhoden",
-  "turma": "TI-2025",
-  "status": "Cancelado"
-}
+    ## 🔐 Autorização com JWT
+    Após realizar o login com sucesso e receber o token JWT, você deve inseri-lo no **cabeçalho da requisição** para acessar rotas.
 
-📋 Listar todos os alunos
-GET http://127.0.0.1:8002/api/listar-alunos
+    ### ✅ Exemplo no Postman:
+    **Cabeçalho HTTP (Headers):**
+    Exemplo visual no Postman:
 
-🔍 Filtrar alunos
-GET http://127.0.0.1:8002/api/listar-alunos/?nome=Gabriel&status=pendente
+    | Key           | Value                                                      |
+    |---------------|------------------------------------------------------------|
+    | Authorization | Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...             |
 
-🆔 Buscar aluno por ID
-GET http://127.0.0.1:8002/api/buscar-aluno/1
+    📚 Funcionalidades da API
+    👨‍🎓 Cadastrar aluno
+    POST http://127.0.0.1:8002/api/criar-aluno
+    {
+    "nome": "Gabriel Rhoden",
+    "cpf": "12345678900",
+    "data_nascimento": "1990-01-01",
+    "turma": "TI-2025",
+    "status": "Pendente"
+    }
 
-✅ Requisitos
-PHP >= 8.2
+    ✏️ Atualizar aluno
+    PATCH http://127.0.0.1:8002/api/editar-aluno/1
+    {
+    "nome": "Gabriel Rhoden",
+    "turma": "TI-2025",
+    "status": "Cancelado"
+    }
 
-Laravel 12.x
+    📋 Listar todos os alunos
+    GET http://127.0.0.1:8002/api/listar-alunos
 
-mysql 10.4.32-MariaDB
+    🔍 Filtrar alunos
+    GET http://127.0.0.1:8002/api/listar-alunos/?nome=Gabriel&status=pendente
 
-Composer version 2.8.4
+    🆔 Buscar aluno por ID
+    GET http://127.0.0.1:8002/api/buscar-aluno/1
 
-👨‍💻 Autor
-Gabriel Rhoden
-📧 **Email:** [gabrielrhdden@email.com](mailto:gabrielrhdden@email.com)  
-🔗 **LinkedIn:** [linkedin.com/in/gabrielrhoden86](https://www.linkedin.com/in/gabrielrhoden86/)
+    ✅ Requisitos
+    PHP >= 8.2
+
+    Laravel 12.x
+
+    mysql 10.4.32-MariaDB
+
+    Composer version 2.8.4
+
+    👨‍💻 Autor
+    Gabriel Rhoden
+    📧 **Email:** [gabrielrhdden@email.com](mailto:gabrielrhdden@email.com)  
+    🔗 **LinkedIn:** [linkedin.com/in/gabrielrhoden86](https://www.linkedin.com/in/gabrielrhoden86/)
+
 
 
 
