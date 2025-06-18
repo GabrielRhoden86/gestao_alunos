@@ -117,14 +117,7 @@ PATCH http://127.0.0.1:8002/api/editar-aluno/1
   "turma": "TI-2025",
   "status": "Cancelado"
 }
-📋 Listar todos os alunos
-GET http://127.0.0.1:8002/api/listar-alunos
 
-🔍 Filtrar alunos
-GET http://127.0.0.1:8002/api/listar-alunos/?nome=Gabriel&status=pendente
-
-🆔 Buscar aluno por ID
-GET http://127.0.0.1:8002/api/buscar-aluno/1
 
 ✅ Requisitos
 PHP >= 8.2

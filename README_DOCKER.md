@@ -82,3 +82,6 @@ Caso queira mudar, basta alterar o email no arquivo DatabaseSeeder
 php artisan db:seed
 Insere dados de exemplo ou obrigatórios no banco para o sistema funcionar.
 
+
+9️⃣ http://localhost:8002/api/login
+Acessa a rota de login para obter token de autenticação.

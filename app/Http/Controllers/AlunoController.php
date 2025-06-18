@@ -33,7 +33,7 @@ class AlunoController extends Controller
             return response()->json(['message' => 'Dados do aluno atualizado com sucesso!','data' => $aluno],
             200);
         } catch (Throwable $e) {
-            return response()->json(['message' => 'Erro interno ao atualizar aluno.', 'error'=> $e->getMessage()], 
+            return response()->json(['message' => 'Erro interno ao atualizar aluno.', 'error'=> $e->getMessage()],
             500);
         }
     }
@@ -51,7 +51,7 @@ class AlunoController extends Controller
     {
         try {
             $aluno = $this->alunoService->buscarAluno($id);
-                return response()->json(['message' => 'Busca realizada com sucesso!', 'data' => $aluno], 
+                return response()->json(['message' => 'Busca realizada com sucesso!', 'data' => $aluno],
                 200);
             } catch (Throwable $e) {
                 return response()->json(['message' => 'Nenhum aluno encontrado.', 'error'=> $e->getMessage()],

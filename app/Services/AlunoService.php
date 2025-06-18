@@ -35,7 +35,7 @@ class AlunoService
             $alunoId = $aluno->id;
             $usuario = Auth::user();
             $emailUsuario = $usuario->email;
-        
+
             if (isset($dados['status']) && $usuario->perfil === Perfil::FUNCIONARIO->value) {
                 return response()->json(['message' =>
                  'Funcionários não têm permissão para alterar o status do aluno.'], 403);
@@ -46,14 +46,14 @@ class AlunoService
 
             $dadosNotificacao = [
                 "nomeAluno" => $nomeAluno,
-                "alunoId" => $alunoId, 
+                "alunoId" => $alunoId,
                 "statusAnterior" => $statusAnterior,
                 "statusNovo" => $statusNovo,
                 "emailUsuario" => $emailUsuario
             ];
-             
+
             if ($statusAnterior !== $statusNovo && in_array($statusNovo, ['Aprovado', 'Cancelado'])) {
-                $this->notificacaoService->notificarGestorAlteracaoStatus($dadosNotificacao);
+                  $this->notificacaoService->notificarGestorAlteracaoStatus($dadosNotificacao);
             }
             return $alunoAtualizado;
 
