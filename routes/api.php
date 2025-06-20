@@ -12,3 +12,7 @@ Route::middleware(['auth:api'])->group(function () {
     Route::get('listar-alunos', [AlunoController::class, 'listarAlunos']);
     Route::get('buscar-aluno/{id}', [AlunoController::class, 'buscarAluno']);
 });
+
+Route::get('/teste', function () {
+    return 'funciona';
+});

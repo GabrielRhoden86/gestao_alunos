@@ -35,6 +35,8 @@ RUN apt-get update && apt-get install -y \
  && chown -R www-data:www-data /var/www/gestao_alunos/storage \
     /var/www/gestao_alunos/bootstrap/cache \
  && chmod -R 775 /var/www/gestao_alunos/storage \
+    chmod -R 775 /var/www/storage/logs \
+    /var/www/gestao_alunos/storage/framework/views \
     /var/www/gestao_alunos/bootstrap/cache
 
 WORKDIR /var/www

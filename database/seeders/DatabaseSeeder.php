@@ -9,7 +9,7 @@ class DatabaseSeeder extends Seeder
 {
     public function run()
     {
-        # Perfil Gestor
+
         User::factory()->create([
             'email' =>  "gabrielrhodden@gmail.com",
             'perfil' => 'gestor',
