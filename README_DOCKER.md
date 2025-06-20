@@ -7,6 +7,7 @@
 
 1️⃣  Clonar o repositório do projeto
 git clone https://github.com/GabrielRhoden86/gestao_alunos.git
+
 cd gestao_alunos
 
 2️⃣ Copiar o arquivo de ambiente
@@ -40,6 +41,7 @@ Sobe os containers definidos no docker-compose.yml em modo destacado background,
 
 3️⃣ Acessar o container da aplicação
 docker exec -it gestao-alunos-app bash
+
 Abre um terminal dentro do container Laravel para executar comandos.
 
 4️⃣ Instalar dependências PHP com Composer
