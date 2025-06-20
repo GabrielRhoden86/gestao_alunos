@@ -45,7 +45,7 @@ docker exec -it gestao-alunos-app bash
 Abre um terminal dentro do container Laravel para executar comandos.
 
 4️⃣ Instalar dependências PHP com Composer
-composer install
+    composer install
 Instala as bibliotecas e dependências PHP necessárias para o projeto.
 
 5️⃣ Gerar chave de criptografia da aplicação
@@ -75,8 +75,6 @@ No arquivo database\seeders\DatabaseSeeder.php, substitua pelo email que irá re
 
 Esse email será usado tanto para notificação como para login do gestor. 
 Caso queira mudar, basta alterar o email no arquivo DatabaseSeeder
-
-✅ php artisan db:seed
 
 ```bash
 
