@@ -21,6 +21,7 @@ cp .env.example .env
 php artisan key:generate
 
 ## crie o banco de dados: gestao_alunos
+CREATE DATABASE gestao_alunos;
 
 📦 Variáveis de ambiente
 Você deve configurar os seguintes campos no seu arquivo .env:
