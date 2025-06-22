@@ -85,3 +85,18 @@ Insere dados de exemplo ou obrigatórios no banco para o sistema funcionar.
 
 9️⃣ http://localhost:8002/api/login
 Acessa a rota de login para obter token de autenticação.
+
+
+POST http://localhost:8002/api/login
+
+👤 Acessar como Gestor  (use o email que você alterou em 'seeders\DatabaseSeeder.php' )
+{
+  "email": "email_para_gestao@notificacao.com", 
+  "password": "230803"
+}
+👤 Acessar como Funcionário
+ 
+{
+  "email": "funcionario@email.com",
+  "password": "230803"
+}
